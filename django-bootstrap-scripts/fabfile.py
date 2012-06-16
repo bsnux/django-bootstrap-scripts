@@ -79,3 +79,9 @@ def ls_remote():
 @task
 def generate_static():
     local('python manage.py collectstatic --noinput && python manage.py compress --force')
+
+@task
+def get_yui(version='2.4.7', target='.'):
+    import urllib
+    url = 'http://yui.zenfs.com/releases/yuicompressor/yuicompressor-{0}.zip'.format(version)
+    urllib.urlretrieve (url, '{0}/yuicompressor-{1}.zip'.format(target, version))
