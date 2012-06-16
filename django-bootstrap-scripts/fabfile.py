@@ -78,4 +78,4 @@ def ls_remote():
 
 @task
 def generate_static():
-    local('python manage.py collectstatic && python manage.py compress --force')
+    local('python manage.py collectstatic --noinput && python manage.py compress --force')
