@@ -1,4 +1,4 @@
 django-bootstrap-scripts
 ========================
 
-Script for bootstrapping your Django projects.
+Scripts for bootstrapping your Django projects.
