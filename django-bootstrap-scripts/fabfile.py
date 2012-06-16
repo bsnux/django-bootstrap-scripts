@@ -47,6 +47,7 @@ def ini_project(name):
     os.mkdir('{0}/static/img'.format(name))
     os.mkdir('{0}/static_collected'.format(name))
     os.mkdir('{0}/media'.format(name))
+    os.mkdir('{0}/templates'.format(name))
 
 @task
 def show_create_db(engine, name):
