@@ -75,3 +75,7 @@ def create_req_file():
 def ls_remote():
     with cd(code_dir):
         run('ls -l')
+
+@task
+def generate_static():
+    local('python manage.py collectstatic && python manage.py compress')
