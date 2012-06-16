@@ -42,6 +42,9 @@ def ini_project(name):
         if not line.startswith('#'):
             print line,
     os.mkdir('{0}/static'.format(name))
+    os.mkdir('{0}/static/js'.format(name))
+    os.mkdir('{0}/static/css'.format(name))
+    os.mkdir('{0}/static/img'.format(name))
     os.mkdir('{0}/static_collected'.format(name))
     os.mkdir('{0}/media'.format(name))
 
