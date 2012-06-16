@@ -19,7 +19,7 @@ def ini_project(name):
             cad = "MEDIA_URL = '/media/'"
             print(line.replace(line, cad))
         elif line.startswith('# Django settings'):
-            cad = "import os\nPROJECT_ROOT = os.path.dirname(os.path.realpath(__file__)) + '{0}/'".format(name)
+            cad = "import os\nPROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))"
             print(line)
             print(cad)
         elif line.startswith('MEDIA_ROOT = '):
