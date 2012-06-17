@@ -91,3 +91,17 @@ def get_yui(version='2.4.7', target='.'):
     import urllib
     url = 'http://yui.zenfs.com/releases/yuicompressor/yuicompressor-{0}.zip'.format(version)
     urllib.urlretrieve (url, '{0}/yuicompressor-{1}.zip'.format(target, version))
+
+@task
+def gen_key():
+    """
+    Generates a new Django secret key
+    """
+    local('python manage.py generate_secret_key')
+
+@task
+def set_fake_pw():
+    """
+    Reset all use passwords to a fake value
+    """
+    local('python manage.py set_fake_passwords')
