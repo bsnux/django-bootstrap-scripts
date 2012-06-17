@@ -12,7 +12,7 @@ setup(
     license = license_text,
     data_files=[('', ['LICENSE.txt'])],
     description = 'Scripts for bootstrapping Django projects',
-    classifiers = ['Development Status :: 5 - Production/Stable',
+    classifiers = ['Development Status :: 4 - Beta',
                    'Environment :: Web Environment',
                    'Framework :: Django',
                    'Intended Audience :: Developers',
