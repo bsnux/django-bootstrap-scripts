@@ -1,5 +1,6 @@
 import os
 import fileinput
+import shutil
 from fabric.api import local, task, cd, run, env
 from fabric.colors import red, green
 
@@ -14,6 +15,8 @@ def ini_project(name, yui_file='./jars/yui.jar'):
     fab ini_project:name=myproject
     """
     settings_file = name + '/settings.py'
+    # Copy original 'settings.py' before starting, just in case
+    shutil.copy2(settings_file, settings_file + ".original")
     # Replacing important variables
     for line in fileinput.input(settings_file, inplace=1):
         if line.startswith('MEDIA_URL = '):
