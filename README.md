@@ -12,6 +12,17 @@ Requirements
 * Fabric
 * django-extensions
 
+Usage
+-----
+
+1. Clone this project
+2. Create a *symlink* on your project directory to *fabfile*. Example:
+
+    `$ cd django-myproject`
+
+    `$ ln -s django-bootstrap-scripts/django-bootstrap-scripts/fabfile.py .`
+
+
 Commands
 ---------
 
