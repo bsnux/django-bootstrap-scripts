@@ -9,7 +9,7 @@ env.user = 'bsnux'
 code_dir = '/home/bsnux/webapps/'
 
 @task
-def ini_project(name, yui_file='../jars/yui.jar'):
+def ini_project(name, yui_file='jars/yui.jar'):
     """
     fab ini_project:name=myproject
     """
