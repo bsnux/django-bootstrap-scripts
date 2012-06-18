@@ -9,7 +9,7 @@ env.user = 'bsnux'
 code_dir = '/home/bsnux/webapps/'
 
 @task
-def ini_project(name, yui_file='jars/yui.jar'):
+def ini_project(name, yui_file='./jars/yui.jar'):
     """
     fab ini_project:name=myproject
     """
@@ -107,7 +107,7 @@ def generate_static():
     local('python manage.py collectstatic --noinput && python manage.py compress --force')
 
 @task
-def get_yui(version='2.4.7', target='.'):
+def get_yui(version='2.4.7', target='./jars/'):
     import urllib
     url = 'http://yui.zenfs.com/releases/yuicompressor/yuicompressor-{0}.zip'.format(version)
     urllib.urlretrieve (url, '{0}/yuicompressor-{1}.zip'.format(target, version))
