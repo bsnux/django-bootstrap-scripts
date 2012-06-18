@@ -1,4 +1,5 @@
 import os
+import fileinput
 from fabric.api import local, task, cd, run, env
 from fabric.colors import red, green
 
@@ -8,12 +9,12 @@ env.user = 'bsnux'
 code_dir = '/home/bsnux/webapps/'
 
 @task
-def ini_project(name):
+def ini_project(name, yui_file='../jars/yui.jar'):
     """
     fab ini_project:name=myproject
     """
     settings_file = name + '/settings.py'
-    import fileinput
+    # Replacing important variables
     for line in fileinput.input(settings_file, inplace=1):
         if line.startswith('MEDIA_URL = '):
             cad = "MEDIA_URL = '/media/'"
@@ -39,11 +40,29 @@ def ini_project(name):
         elif line.startswith('TIME_ZONE = '):
             cad = "TIME_ZONE = 'Europe/Madrid'"
             print(line.replace(line, cad))
+        elif line.find("'django.contrib.staticfiles.finders.AppDirectoriesFinder'") != -1:
+            print(line)
+            print("\t'compressor.finders.CompressorFinder',")
+        elif line.find("'django.contrib.staticfiles'") != -1:
+            print(line)
+            print("\t'compressor',")
         else:
             print line,
+    # Deleting lines with comments
     for line in fileinput.input(settings_file, inplace=1):
         if not line.startswith('#'):
             print line,
+    # Adding 'compressor' configuration
+    f = open(settings_file, 'a')
+    f.write("\nCOMPRESS_YUI_BINARY = '{0}'\n".format(yui_file))
+    f.write('\nCOMPRESS_JS_FILTERS = [\n')
+    f.write("\t'compressor.filters.yui.YUIJSFilter',\n")
+    f.write(']\n')
+    f.write('\nCOMPRESS_CSS_FILTERS = [\n')
+    f.write("\t'compressor.filters.yui.YUICSSFilter',\n")
+    f.write(']\n')
+    f.close()
+    # Creating static, media and templates files
     os.mkdir('{0}/static'.format(name))
     os.mkdir('{0}/static/js'.format(name))
     os.mkdir('{0}/static/css'.format(name))
