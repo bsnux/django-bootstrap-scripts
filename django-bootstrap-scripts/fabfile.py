@@ -37,7 +37,8 @@ def ini_project(name):
             print(line)
             print(cad)
         elif line.startswith('TIME_ZONE = '):
-            print(line.replace(line, 'Europe/Madrid'))
+            cad = "TIME_ZONE = 'Europe/Madrid'"
+            print(line.replace(line, cad))
         else:
             print line,
     for line in fileinput.input(settings_file, inplace=1):
