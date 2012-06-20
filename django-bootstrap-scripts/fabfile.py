@@ -1,13 +1,18 @@
 import os
 import fileinput
 import shutil
-from fabric.api import local, task, cd, run, env
+import time
+from fabric.api import local, task, cd, run, env, get
 from fabric.colors import red, green
 
 env.hosts = ['bsnux.com']
 env.user = 'bsnux'
 
 code_dir = '/home/bsnux/webapps/'
+
+def download_file(url, dest='.'):
+    import urllib
+    urllib.urlretrieve (url, dest)
 
 @task
 def ini_project(name, yui_file='./jars/yui.jar'):
@@ -111,9 +116,9 @@ def generate_static():
 
 @task
 def get_yui(version='2.4.7', target='./jars/'):
-    import urllib
-    url = 'http://yui.zenfs.com/releases/yuicompressor/yuicompressor-{0}.zip'.format(version)
-    urllib.urlretrieve (url, '{0}/yuicompressor-{1}.zip'.format(target, version))
+    yui_file = 'http://yui.zenfs.com/releases/yuicompressor/yuicompressor-{0}.zip'.format(version)
+    yui_dest = '{0}/yuicompressor-{1}.zip'.format(target, version)
+    download_file(yui_file, yui_dest)
 
 @task
 def gen_key():
@@ -128,3 +133,17 @@ def set_fake_pw():
     Reset all use passwords to a fake value
     """
     local('python manage.py set_fake_passwords')
+
+@task
+def backup_mysql(name, user, passwd, dest_dir='/tmp/'):
+    """
+    Backup your MysQL name and save it to your local machine
+    """
+    timestamp = int(time.time())
+    dest_file = '{0}{1}-{2}.sql'.format(dest_dir, name, timestamp)
+    cmd = 'mysqldump {0} -u {1} -p{2} > {3}'.format(name,
+                                                    user,
+                                                    passwd,
+                                                    dest_file)
+    run(cmd)
+    get(dest_file)
