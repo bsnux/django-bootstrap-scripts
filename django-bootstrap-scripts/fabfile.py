@@ -137,7 +137,7 @@ def set_fake_pw():
 @task
 def backup_mysql(name, user, passwd, dest_dir='/tmp/'):
     """
-    Backup your MysQL name and save it to your local machine
+    Backup your MysQL database and save it to your local machine
     """
     timestamp = int(time.time())
     dest_file = '{0}{1}-{2}.sql'.format(dest_dir, name, timestamp)
