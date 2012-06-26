@@ -19,7 +19,7 @@ def create_project(name='myproject', app='main'):
     """
     Create a project with a default application
     """
-    local('django-admin startproject {0}'.format(name))
+    local('django-admin.py startproject {0}'.format(name))
     with lcd(name):
         local('python manage.py startapp {0}'.format(app))
 
@@ -62,7 +62,7 @@ def ini_project(name, yui_file='./jars/yui.jar'):
             print("\t'compressor.finders.CompressorFinder',")
         elif line.find("'django.contrib.staticfiles'") != -1:
             print(line)
-            print("\t'compressor',")
+            print("\t'compressor',\n\t'django_extensions',")
         else:
             print line,
     # Deleting lines with comments
