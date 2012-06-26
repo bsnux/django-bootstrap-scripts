@@ -17,7 +17,7 @@ def download_file(url, dest='.'):
 @task
 def ini_project(name, yui_file='./jars/yui.jar'):
     """
-    fab ini_project:name=myproject
+    Set different variables, create static directories and configure compressor
     """
     settings_file = name + '/settings.py'
     # Copy original 'settings.py' before starting, just in case
@@ -82,7 +82,7 @@ def ini_project(name, yui_file='./jars/yui.jar'):
 @task
 def show_create_db(engine, name):
     """
-    fab show_create_db:mysql,dbname
+    Usage: fab show_create_db:mysql,dbname
     """
     if engine == 'mysql':
         create_str = 'CREATE DATABASE {0} DEFAULT CHARACTER SET utf8;'.format(name)
@@ -99,23 +99,38 @@ def show_create_db(engine, name):
 
 @task
 def install_req():
+    """
+    Install all required Django packages reading a requirement file
+    """
     local('pip install -r requirements/project.txt')
 
 @task
 def create_req_file():
+    """
+    Create a requirements file for pip
+    """
     local('pip freeze > requirements/project.txt')
 
 @task
 def ls_remote():
+    """
+    list remote default directory
+    """
     with cd(code_dir):
         run('ls -l')
 
 @task
 def generate_static():
+    """
+    Run collectstatic and compress Django commands
+    """
     local('python manage.py collectstatic --noinput && python manage.py compress --force')
 
 @task
 def get_yui(version='2.4.7', target='./jars/'):
+    """
+    Download YUI compressor library
+    """
     yui_file = 'http://yui.zenfs.com/releases/yuicompressor/yuicompressor-{0}.zip'.format(version)
     yui_dest = '{0}/yuicompressor-{1}.zip'.format(target, version)
     download_file(yui_file, yui_dest)

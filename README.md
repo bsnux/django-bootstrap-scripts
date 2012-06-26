@@ -26,18 +26,7 @@ Usage
 Commands
 ---------
 
-* **ini_project**: Create static (*img/*, *js/* *css/*), templates and media directories and set different variables for them.
+See a complete list executing:
 
-* **show\_create\_db**: Display SQL sentences for creating an empty database for MySQL and PostgreSQL.
-
-* **install_req**: Install all required Django packages reading a requirements files. *pip* is required.
-
-* **create\_req\_file**: Create a requirements file for *pip*.
-
-* **generate_static**: Run *collectstatic* and *compress* Django commands.
-
-* **get_yui**: Download YUI compressor library.
-
-* **gen_key**: Generate a Django secret key.
-
-* **set\_fake\_pw**: Generate fake passwords for your users.
+    `$ cd django-bootstrap-scripts`
+    `$ fab -l`
