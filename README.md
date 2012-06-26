@@ -8,19 +8,23 @@ Minimum Django version for these scripts is **1.4**.
 Requirements
 ------------
 
-* Django >= 1.4
 * Fabric
+* Django >= 1.4
 * django-extensions
 
 Usage
 -----
 
 1. Clone this project
-2. Create a *symlink* on your project directory to *fabfile*. Example:
+2. Install this package:
 
-    `$ cd django-myproject`
+    `$ cd django-bootstrap-scripts`
 
-    `$ ln -s django-bootstrap-scripts/django-bootstrap-scripts/fabfile.py .`
+    `$ python setup.py install`
+
+3. Create your Django project with a *fabfile* with this content:
+
+    `from bootstrap import fabfile`
 
 
 Commands
