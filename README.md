@@ -22,7 +22,7 @@ Usage
 
     `$ python setup.py install`
 
-3. Create your Django project with a *fabfile* with this content:
+3. Create your Django project with a *fabfile.py* with this content:
 
     `from bootstrap.fabfile_dist import *`
 
