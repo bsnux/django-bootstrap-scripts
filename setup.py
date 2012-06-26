@@ -15,7 +15,8 @@ setup(
     data_files=[('', ['LICENSE.txt'])],
     description = 'Scripts for bootstrapping Django projects',
     install_requires=[
-        "Fabric==1.4.2",
+        'Fabric==1.4.2',
+        'django-extensions==0.9',
     ],
     classifiers = ['Development Status :: 4 - Beta',
                    'Environment :: Web Environment',
