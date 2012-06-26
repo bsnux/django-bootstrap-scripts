@@ -5,14 +5,15 @@ import time
 from fabric.api import local, task, cd, run, env, get, lcd
 from fabric.colors import red, green
 
+# Variables for remote commands
 env.hosts = ['bsnux.com']
 env.user = 'bsnux'
 
 code_dir = '/home/bsnux/webapps/'
 
-def download_file(url, dest='.'):
-    import urllib
-    urllib.urlretrieve (url, dest)
+#-------
+# Tasks
+#--------
 
 @task
 def create_project(name='myproject', app='main'):
@@ -123,7 +124,7 @@ def create_req_file():
 @task
 def ls_remote():
     """
-    list remote default directory
+    List remote default directory
     """
     with cd(code_dir):
         run('ls -l')
@@ -185,3 +186,14 @@ def create_gmail_file(f='/tmp/google.csv'):
     Create a csv file importable by GMail or Google Docs
     """
     local('python manage.py export_emails --format=google {0}'.format(f))
+
+#-------------------
+# Useful functions
+#-------------------
+
+def download_file(url, dest='.'):
+    import urllib
+    urllib.urlretrieve(url, dest)
+
+
+
