@@ -2,7 +2,7 @@ import os
 import fileinput
 import shutil
 import time
-from fabric.api import local, task, cd, run, env, get
+from fabric.api import local, task, cd, run, env, get, lcd
 from fabric.colors import red, green
 
 env.hosts = ['bsnux.com']
@@ -13,6 +13,16 @@ code_dir = '/home/bsnux/webapps/'
 def download_file(url, dest='.'):
     import urllib
     urllib.urlretrieve (url, dest)
+
+@task
+def create_project(name='myproject', app='main'):
+    """
+    Create a project with a default application
+    """
+    local('django-admin startproject {0}'.format(name))
+    with lcd(name):
+        local('ls -l')
+        local('python manage.py startapp {0}'.format(app))
 
 @task
 def ini_project(name, yui_file='./jars/yui.jar'):
