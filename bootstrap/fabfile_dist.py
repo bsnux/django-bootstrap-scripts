@@ -178,3 +178,10 @@ def del_pyc():
     Delete *.pyc of your project
     """
     local('find . -name \*.pyc | xargs rm')
+
+@task
+def create_gmail_file(f='/tmp/google.csv'):
+    """
+    Create a csv file importable by GMail or Google Docs
+    """
+    local('python manage.py export_emails --format=google {0}'.format(f))
