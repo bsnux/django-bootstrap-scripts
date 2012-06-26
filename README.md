@@ -24,7 +24,7 @@ Usage
 
 3. Create your Django project with a *fabfile* with this content:
 
-    `from bootstrap import *`
+    `from bootstrap.fabfile_dist import *`
 
 
 Commands
