@@ -28,6 +28,6 @@ Commands
 
 See a complete list executing:
 
-    `$ cd django-bootstrap-scripts`
+    $ cd django-bootstrap-scripts
 
-    `$ fab -l`
+    $ fab -l
