@@ -1,15 +1,15 @@
-import os
 from distutils.core import setup
 
 license_text = open('LICENSE.txt').read()
 
 setup(
     name = 'django-bootstrap-scripts',
-    version = '0.9',
+    version = '0.1',
     url = 'http://github.com/bsnux/django-bootstrap-scripts',
     author = 'Arturo Fernandez',
     author_email = 'arturo@bsnux.com',
     license = license_text,
+    packages = ['bootstrap'],
     data_files=[('', ['LICENSE.txt'])],
     description = 'Scripts for bootstrapping Django projects',
     classifiers = ['Development Status :: 4 - Beta',

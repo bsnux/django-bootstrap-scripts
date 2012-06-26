@@ -1,0 +1,12 @@
+tmp/**/*
+tmp/*
+*.pyc
+log/*
+\#*
+.\#*
+._*
+*~
+**/*.swp
+*.swp
+static_collected/*
+build/*
