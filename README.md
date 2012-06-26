@@ -28,14 +28,14 @@ Usage
 
 4. Optional: You can use your own *fabfile* per project:
 
-    * Add following lines to your *fabfile.py*:
+* Add following lines to your *fabfile.py*:
 
-            try:
-                from fabfile_project import *
-            except:
-                pass
+        try:
+            from fabfile_project import *
+        except:
+            pass
 
-    * Create a new *fabfile_project.py* and use it as your regular *fabfile.py*
+* Create a new *fabfile_project.py* and use it as your regular *fabfile.py*
 
 Commands
 ---------
