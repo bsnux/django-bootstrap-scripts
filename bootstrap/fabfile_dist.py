@@ -12,7 +12,7 @@ from fabric.colors import red, green
 def ls_remote():
     """
     List remote default directory
-    Usage: fab ls_remote -H <host> -U <user>
+    Usage: fab ls_remote -H <host> -u <user>
     """
     with cd('.'):
         run('ls -l')
