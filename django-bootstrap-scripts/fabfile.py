@@ -21,7 +21,6 @@ def create_project(name='myproject', app='main'):
     """
     local('django-admin startproject {0}'.format(name))
     with lcd(name):
-        local('ls -l')
         local('python manage.py startapp {0}'.format(app))
 
 @task
