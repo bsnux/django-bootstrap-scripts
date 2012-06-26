@@ -171,3 +171,10 @@ def backup_mysql(name, user, passwd, dest_dir='/tmp/'):
                                                     dest_file)
     run(cmd)
     get(dest_file)
+
+@task
+def del_pyc():
+    """
+    Delete *.pyc of your project
+    """
+    local('find . -name \*.pyc | xargs rm')
